@@ -41,8 +41,4 @@ With a strong foundation in frontend development, I bring a unique perspective t
 
 ---
 
-Feel free to explore my repositories and reach out if you're interested in collaboration or discussions about Rust, Solana, or blockchain development in general. Let's build the future of decentralized technology together!
-
----
-
-**Note:** This cover page is a template. You can personalize it by adding links to your actual projects, updating your contact information, and including any other details that highlight your experience and aspirations.
+## Feel free to reach out if you're interested in collaboration or discussions about Rust, Solana, or blockchain development in general.
