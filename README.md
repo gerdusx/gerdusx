@@ -41,4 +41,4 @@ With a strong foundation in frontend development, I bring a unique perspective t
 
 ---
 
-## Feel free to reach out if you're interested in collaboration or discussions about Rust, Solana, or blockchain development in general.
+**Feel free to reach out if you're interested in collaboration or discussions about Rust, Solana, or blockchain development in general.**
