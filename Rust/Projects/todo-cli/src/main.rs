@@ -3,7 +3,13 @@ use std::io;
 struct ToDoItem {
     id: i32,
     name: String,
-    completed: char,
+    completed: bool,
+}
+
+impl ToDoItem {
+    fn new(id: i32, name: String) -> ToDoItem {
+        ToDoItem { id, name, completed: false }
+    }
 }
 
 fn main() {
@@ -23,6 +29,29 @@ fn main() {
         let option = option.trim().parse::<u32>().expect("Please enter a number");
 
         match option {
+            1 => {
+                println!("Enter the new item: ");
+
+                let mut new_item = String::new();
+                io::stdin().read_line(&mut new_item).expect("Failed to read line");
+
+                let new_item = ToDoItem::new(
+                    (todo_list.len() + 1) as i32, 
+                    new_item.trim().to_owned()
+                );
+                todo_list.push(new_item);
+                
+                println!("Item added successfully!");
+            },
+            3 => {
+                println!("");
+                println!("-------------------------------------");
+                for item in &todo_list {
+                    println!("[ ] - {}.\t{}\t", item.id, item.name);
+                }
+                println!("-------------------------------------");
+                println!("");
+            },
             4 => {
                 println!("Goodbye!");
                 break;
