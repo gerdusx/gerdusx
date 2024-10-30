@@ -1,5 +1,6 @@
 **/test-ledger/
 **/honggfuzz/
+**/target/
 
 .env*.local
 .env
