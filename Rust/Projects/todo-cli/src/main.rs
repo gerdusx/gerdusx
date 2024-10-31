@@ -1,83 +1,95 @@
-use std::fs;
-use std::io::{Write, BufRead, BufReader};
-use std::usize;
-fn main() {
-    println!("Welcome to Rust todo!");
 
-    let mut todos = load_todos().unwrap_or_else(|_| Vec::new());
+
+
+
+fn main() {
+    //I want to load a list of todos from a file, list of strings, and load them into a vector
+    //I want to be able to add a todo to the list
+    //I want to be able to remove a todo from the list
+    //I want to be able to save the list of todos to a file
+    //I want to display the list of todos to the user
+
+    let mut todos = load_todos();
 
     loop {
-        println!("\n1. Add Todo\n2. List Todos\n3. Remove Todo\n4. Quit");
-        let choice = read_line();
+        display_todos(&todos);
 
+        let input = read_input();
 
-        match choice.trim() {
-            "1" => add_todo(&mut todos),
-            "2" => list_todos(&todos),
-            "3" => remove_todo(&mut todos),
-            "4" => break,
-            _ => println!("Invalid option")
+        if input == 1 {
+            add_todo(&mut todos);
+        } else if input == 2 {
+            println!("Which todo would you like to remove?");
+            for (index, todo) in todos.iter().enumerate() {
+                println!("{}. {}", index + 1, todo);
+            }
+            let mut index = String::new();
+            std::io::stdin().read_line(&mut index).unwrap();
+            let index: usize = index.trim().parse().unwrap();
+            todos.remove(index - 1);
+        }else if input == 3 {
+            save_todos(&todos);
+            break;
+        } else {
+            println!("Invalid input");
         }
     }
-
-    match save_todos(&todos) {
-        Ok(_) => println!("Todos saved"),
-        Err(e) => println!("Failed to save todos: {}", e)
-    }
-}
-
-fn read_line() -> String {
-    let mut input = String::new();
-    std::io::stdin().read_line(&mut input).expect("Failed to read line");
-    input.trim().to_owned()
-}
-
-fn load_todos() -> std::io::Result<Vec<String>> {
-    let file  = fs::File::open("todos.txt")?;
-    let reader = BufReader::new(file);
-    Ok(reader.lines().collect::<Result<Vec<_>, _>>()?)
-}
-
-fn save_todos(todos: &[String]) -> std::io::Result<()> {
-    let mut file = fs::File::create("todos.txt")?;
-    for todo in todos {
-        writeln!(file, "{}", todo)?;
-    }
-    Ok(())
 }
 
 fn add_todo(todos: &mut Vec<String>) {
-    println!("Add todo: ");
-    let todo = read_line();
-    if !todo.is_empty() {
-        todos.push(todo);
-        println!("Todo added");
-    }
+    println!("What todo would you like to add?");
+    let mut new_todo = String::new();
+    std::io::stdin().read_line(&mut new_todo).unwrap();
+    todos.push(new_todo.trim().to_string());
 }
 
-fn list_todos(todos: &[String]) {
+//function to load todos from a file
+fn load_todos() -> Vec<String> {
+    let contents = std::fs::read_to_string("todos.txt").unwrap();
+    contents.lines().map(|s| s.to_string()).collect()
+}
+
+//functiob to display todos
+fn display_todos(todos: &Vec<String>) {
+    //clear console
+    print!("\x1B[2J\x1B[1;1H");
+    println!("------------------------------");
+    println!("Todos:");
     if todos.is_empty() {
-        println!("No todos yet");
+        println!("You have no todos!");
     } else {
+        //print all todos with index + 1 at the start
         for (index, todo) in todos.iter().enumerate() {
             println!("{}. {}", index + 1, todo);
         }
     }
+
+    println!("------------------------------");
+    //print option in one line, like (1) Add a todo...
+    println!("1. Add a todo\n2. Remove a todo\n3. Quit");
+    println!("");
+    println!("Enter your choice: ");
 }
 
-fn remove_todo(todos: &mut Vec<String>) {
-    list_todos(todos);
-    if !todos.is_empty() {
-        println!("Enter the number of the todo to remove");
-        if let Ok(num) = read_line().parse::<usize>() {
-            if num > 0 && num <= todos.len() {
-                todos.remove(num - 1);
-                println!("Todo removed");
-            } else {
-                println!("Invalid number");
-            }
-        }
+//function to read user input
+fn read_input() -> u32 {
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+    let input: u32 = input.trim().parse().unwrap();
+    input
+}
+
+//function to save todos to a file
+fn save_todos(todos: &Vec<String>) {
+    let mut todo_str = String::new();
+    for todo in todos.iter() {
+        todo_str.push_str(todo);
+        todo_str.push_str("\n");
     }
+    std::fs::write("todos.txt", todo_str).unwrap();
 }
 
-
+//function to remove a todo
+fn remove_todo() {
+    
+}

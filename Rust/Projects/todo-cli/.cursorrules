@@ -1,0 +1,100 @@
+Here's the list of tickets with corresponding quotes from the project description:
+
+Define file format for todos (Complexity: 10)
+Quote: "Todo's should be saved in a text file and should be a list of items."
+
+Initialize a new Rust project using Cargo (Complexity: 2)
+Quote: "Create a simple Rust todo CLI application in Rust using Cargo."
+
+Define the structure for the Todo struct (Complexity: 5)
+Quote: "Todo's should be saved in a text file and should be a list of items."
+
+Design the CLI structure specifying options: add, remove, and quit (Complexity: 10)
+Quote: "With the following options, add, remove, quit."
+
+Implement file reading function to load todos from a file (Complexity: 15)
+Quote: "When starting, the list should be loaded from file."
+
+Handle cases for missing or corrupted files by initializing an empty list if necessary (Complexity: 10)
+Quote: "When starting, the list should be loaded from file."
+
+Implement data formatting for saving todos to a file (Complexity: 10)
+Quote: "When quitting, the list should be saved to file."
+
+Implement file writing function to save the todos upon quitting (Complexity: 10)
+Quote: "When quitting, the list should be saved to file."
+
+Implement error handling for file save to manage issues like overwriting or file corruption (Complexity: 15)
+Quote: "When quitting, the list should be saved to file."
+
+Design an identifier system (e.g., index number) for each todo to ensure accurate removal (Complexity: 10)
+Quote: "With the following options, add, remove, quit."
+
+Implement the add todo function for adding new items based on user input (Complexity: 10)
+Quote: "With the following options, add, remove, quit."
+
+Implement the remove function logic to remove specified items from the list (Complexity: 15)
+Quote: "With the following options, add, remove, quit."
+
+Add validation to ensure the requested item exists before attempting removal (Complexity: 5)
+Quote: "With the following options, add, remove, quit."
+
+Implement console clearing functionality after every operation (Complexity: 5)
+Quote: "After each operation, the console should be cleared and list reprinted with options."
+
+Create a formatted display view for todos to print the list after every operation (Complexity: 15)
+Quote: "Todo's should be printed out in a nice looking format."
+
+Implement the quit command ensuring todos are saved and the application exits (Complexity: 10)
+Quote: "With the following options, add, remove, quit."
+
+Test file persistence by verifying todos are saved and loaded correctly across sessions (Complexity: 10)
+Quote: "When starting, the list should be loaded from file." and "When quitting, the list should be saved to file."
+
+Write test cases to confirm that todos load from file accurately (Complexity: 10)
+Quote: "When starting, the list should be loaded from file."
+
+Write test cases to confirm that todos save to file accurately (Complexity: 10)
+Quote: "When quitting, the list should be saved to file."
+
+Test with edge cases, such as empty files, corrupt data, or missing data (Complexity: 15)
+Quote: "When starting, the list should be loaded from file." and "When quitting, the list should be saved to file."
+
+Implement specific handling for missing file cases (Complexity: 5)
+Quote: "When starting, the list should be loaded from file."
+
+Handle file read errors, including permissions or corrupted data (Complexity: 15)
+Quote: "When starting, the list should be loaded from file."
+
+Implement user-friendly error messages for file-related issues (Complexity: 5)
+Quote: "When starting, the list should be loaded from file." and "When quitting, the list should be saved to file."
+
+Add a retry mechanism for file write failures (Complexity: 10)
+Quote: "When quitting, the list should be saved to file."
+
+Write tests for the add function, covering basic and unusual inputs (Complexity: 10)
+Quote: "With the following options, add, remove, quit."
+
+Write tests to confirm that the remove function works as expected (Complexity: 15)
+Quote: "With the following options, add, remove, quit."
+
+Verify that todos are displayed in the correct format using tests (Complexity: 10)
+Quote: "Todo's should be printed out in a nice looking format."
+
+Write tests to confirm file save/load accuracy (Complexity: 10)
+Quote: "When starting, the list should be loaded from file." and "When quitting, the list should be saved to file."
+
+Refactor code into modules for better organization and maintainability (Complexity: 35)
+Quote: "Create a simple Rust todo CLI application in Rust using Cargo."
+
+Document the code and usage in a README file (Complexity: 15)
+Quote: "Create a simple Rust todo CLI application."
+
+Conduct functional testing to validate all primary functions (Complexity: 25)
+Quote: "With the following options, add, remove, quit."
+
+Conduct edge case testing with unusual inputs and large lists (Complexity: 20)
+Quote: "Todo's should be saved in a text file and should be a list of items."
+
+Fix identified bugs based on test results (Complexity: 20)
+Quote: "After each operation, the console should be cleared and list reprinted with options."
