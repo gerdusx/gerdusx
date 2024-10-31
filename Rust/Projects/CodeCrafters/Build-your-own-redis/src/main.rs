@@ -12,10 +12,16 @@ fn main() {
                 println!("accepted new connection");
 
                 let mut buf = [0; 1024];
-                stream.read(&mut buf).unwrap();
+                loop {
+                    let stream_count = stream.read(&mut buf).unwrap();
 
-                let buf = b"+PONG\r\n";
-                stream.write(buf).unwrap();
+                    if stream_count == 0 {
+                        break;
+                    }
+    
+                    let buf = b"+PONG\r\n";
+                    stream.write(buf).unwrap();
+                }
             }
             Err(e) => {
                 println!("error: {}", e);
