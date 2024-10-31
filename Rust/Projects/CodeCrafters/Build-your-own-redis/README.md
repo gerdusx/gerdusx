@@ -16,6 +16,8 @@ Follow my journey on X as I complete each stage:
 
 - **[Stage 1](https://x.com/GerdusM/status/1851677627859320912)**: Binding to a port and listening for connections
 - **[Stage 2](https://x.com/GerdusM/status/1851705922336510172)**: Responding to incoming request with `PONG`
+- **[Stage 3](https://x.com/GerdusM/status/1852062624399396897)**: Handling multiple incoming requests over a single connection
+
 
 *More links will be added as I progress through each stage.*
 
