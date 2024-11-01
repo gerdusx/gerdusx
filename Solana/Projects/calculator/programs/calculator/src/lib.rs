@@ -13,9 +13,16 @@ pub mod calculator {
     }
 
     pub fn subtract(_ctx: Context<Subtract>, a: u64, b: u64) -> Result<()> {
-        let result = a.checked_sub(b).unwrap();
-        msg!("subtracting:{} - {} = {}", a, b, result);
-        Ok(())
+        match a.checked_sub(b) {
+            Some(result) => {
+                msg!("subtracting:{} - {} = {}", a, b, result);
+                Ok(())
+            }
+            None => {
+                msg!("underflow subtracting:{} - {}", a, b);
+                Err(CustomError::Underflow.into())
+            },
+        }
     }
 
     pub fn multiply(_ctx: Context<Multiply>, a: u64, b: u64) -> Result<()> {
@@ -60,3 +67,9 @@ pub struct SquareRoot {}
 
 #[derive(Accounts)]
 pub struct Log10 {}
+
+#[error_code]
+pub enum CustomError {
+    #[msg("Underflow occurred during subtraction.")]
+    Underflow,
+}
