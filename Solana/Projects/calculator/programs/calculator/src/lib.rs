@@ -11,7 +11,16 @@ pub mod calculator {
         msg!("adding:{} + {} = {}", a, b, result);
         Ok(())
     }
+
+    pub fn subtract(_ctx: Context<Subtract>, a: u64, b: u64) -> Result<()> {
+        let result = a.checked_sub(b).unwrap();
+        msg!("subtracting:{} - {} = {}", a, b, result);
+        Ok(())
+    }
 }
 
 #[derive(Accounts)]
 pub struct Add {}
+
+#[derive(Accounts)]
+pub struct Subtract {}

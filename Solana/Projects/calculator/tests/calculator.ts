@@ -12,4 +12,8 @@ describe('calculator', () => {
   it('adds two numbers', async () => {
     const tx = await program.methods.add(new anchor.BN(1), new anchor.BN(2)).rpc();
   });
+
+  it('subtracts two numbers', async () => {
+    const tx = await program.methods.subtract(new anchor.BN(10), new anchor.BN(2)).rpc();
+  });
 });
