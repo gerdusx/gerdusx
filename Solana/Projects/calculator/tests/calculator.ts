@@ -1,16 +1,15 @@
-import * as anchor from "@coral-xyz/anchor";
-import { Program } from "@coral-xyz/anchor";
-import { Calculator } from "../target/types/calculator";
+import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Calculator } from '../target/types/calculator';
+import { assert } from 'chai';
 
-describe("calculator", () => {
+describe('calculator', () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
 
   const program = anchor.workspace.Calculator as Program<Calculator>;
 
-  it("Is initialized!", async () => {
-    // Add your test here.
-    const tx = await program.methods.initialize().rpc();
-    console.log("Your transaction signature", tx);
+  it('adds two numbers', async () => {
+    const tx = await program.methods.add(new anchor.BN(1), new anchor.BN(2)).rpc();
   });
 });
